@@ -9,9 +9,12 @@ import (
 	"os/exec"
 	"path/filepath"
 
-	"github.com/autonomouskoi/mageutil"
+	"github.com/magefile/mage/mg"
 	"github.com/magefile/mage/sh"
 	"github.com/magefile/mage/target"
+
+	svc "github.com/autonomouskoi/core-tinygo/svc/build"
+	"github.com/autonomouskoi/mageutil"
 )
 
 var (
@@ -19,6 +22,8 @@ var (
 	testWASMDir string
 	wasmDir     string
 )
+
+var Default = Protos
 
 func init() {
 	var err error
@@ -35,7 +40,12 @@ func Clean() error {
 	return sh.Rm(wasmDir)
 }
 
-func Dev() {}
+func Protos() {
+	mg.Deps(
+		TinyGoProtos,
+		svc.TinyGoProtos,
+	)
+}
 
 func wasmOutDir() error {
 	return mageutil.Mkdir(wasmDir)
