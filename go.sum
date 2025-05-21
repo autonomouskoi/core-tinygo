@@ -1,0 +1,12 @@
+github.com/aperturerobotics/protobuf-go-lite v0.9.1 h1:P1knXKnwLJpVE8fmeXYGckKu79IhqUvKRdCfJNR0MwQ=
+github.com/aperturerobotics/protobuf-go-lite v0.9.1/go.mod h1:fULrxQxEBWKQm7vvju9AfjTp9yfHoLgwMQWTiZQ2tg0=
+github.com/autonomouskoi/akcore v0.1.0 h1:13AiMlAXpi32PKvTKwceJ09l/9xYmZRvHmesdHrCd6Y=
+github.com/autonomouskoi/akcore v0.1.0/go.mod h1:NJRN8jr5bJk1SjZvqLV43XoF+4ZLIcN5nzyhl322Bhg=
+github.com/autonomouskoi/mageutil v0.0.16 h1:aHjdBOlnSm9/LhBOkAYpxes1jZH+B5lFA+5jyNkUxSQ=
+github.com/autonomouskoi/mageutil v0.0.16/go.mod h1:t46xOJ4x+k3aOxV4T2uAaPv9yNNUxSs+H8yWd+A/svI=
+github.com/extism/go-pdk v1.1.3 h1:hfViMPWrqjN6u67cIYRALZTZLk/enSPpNKa+rZ9X2SQ=
+github.com/extism/go-pdk v1.1.3/go.mod h1:Gz+LIU/YCKnKXhgge8yo5Yu1F/lbv7KtKFkiCSzW/P4=
+github.com/magefile/mage v1.15.0 h1:BvGheCMAsG3bWUDbZ8AyXXpCNwU9u5CB6sM+HNb9HYg=
+github.com/magefile/mage v1.15.0/go.mod h1:z5UZb/iS3GoOSn0JgWuiw7dxlurVYTu+/jHXqQg881A=
+google.golang.org/protobuf v1.36.6 h1:z1NpPI8ku2WgiWnf+t9wTPsn6eP1L7ksHUlkfLvd9xY=
+google.golang.org/protobuf v1.36.6/go.mod h1:jduwjTPXsFjZGTmRluh+L6NjiWu7pchiJ2/5YcXBHnY=
