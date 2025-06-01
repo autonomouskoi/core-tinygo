@@ -4,8 +4,8 @@ go 1.23.1
 
 require (
 	github.com/aperturerobotics/protobuf-go-lite v0.9.1
-	github.com/autonomouskoi/akcore v0.1.0
-	github.com/autonomouskoi/mageutil v0.0.16
+	github.com/autonomouskoi/akcore v0.1.3
+	github.com/autonomouskoi/mageutil v0.0.18
 	github.com/extism/go-pdk v1.1.3
 	github.com/magefile/mage v1.15.0
 )
