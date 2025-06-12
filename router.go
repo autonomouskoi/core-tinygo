@@ -52,8 +52,8 @@ func MarshalMessage(msg *BusMessage, v Marshaller) {
 		errStr := err.Error()
 		LogError("marshalling", "error", errStr)
 		msg.Error = &Error{
-			Code:        int32(CommonErrorCode_INVALID_TYPE),
-			UserMessage: &errStr,
+			Code:   int32(CommonErrorCode_INVALID_TYPE),
+			Detail: &errStr,
 		}
 	}
 }
@@ -65,8 +65,8 @@ func UnmarshalMessage(msg *BusMessage, v Unmarshaller) *Error {
 		errStr := err.Error()
 		LogError("unmarshalling", "error", errStr)
 		return &Error{
-			Code:        int32(CommonErrorCode_INVALID_TYPE),
-			UserMessage: &errStr,
+			Code:   int32(CommonErrorCode_INVALID_TYPE),
+			Detail: &errStr,
 		}
 	}
 	return nil

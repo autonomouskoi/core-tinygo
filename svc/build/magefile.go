@@ -35,7 +35,7 @@ func TinyGoProtos() error {
 		err := mageutil.TinyGoProto(
 			filepath.Join(baseDir, outFile),
 			filepath.Join(protosDir, protoFile),
-			akcoreDir,
+			protosDir,
 		)
 		if err != nil {
 			return fmt.Errorf("%s -> %s: %w",

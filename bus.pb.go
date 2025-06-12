@@ -8,6 +8,7 @@ import (
 	binary "encoding/binary"
 	fmt "fmt"
 	protobuf_go_lite "github.com/aperturerobotics/protobuf-go-lite"
+	json "github.com/aperturerobotics/protobuf-go-lite/json"
 	io "io"
 	math "math"
 	strconv "strconv"
@@ -1661,6 +1662,1098 @@ func (this *LogSendResponse) EqualMessageVT(thatMsg any) bool {
 	}
 	return this.EqualVT(that)
 }
+
+// MarshalProtoJSON marshals the CommonErrorCode to JSON.
+func (x CommonErrorCode) MarshalProtoJSON(s *json.MarshalState) {
+	s.WriteEnumString(int32(x), CommonErrorCode_name)
+}
+
+// MarshalText marshals the CommonErrorCode to text.
+func (x CommonErrorCode) MarshalText() ([]byte, error) {
+	return []byte(json.GetEnumString(int32(x), CommonErrorCode_name)), nil
+}
+
+// MarshalJSON marshals the CommonErrorCode to JSON.
+func (x CommonErrorCode) MarshalJSON() ([]byte, error) {
+	return json.DefaultMarshalerConfig.Marshal(x)
+}
+
+// UnmarshalProtoJSON unmarshals the CommonErrorCode from JSON.
+func (x *CommonErrorCode) UnmarshalProtoJSON(s *json.UnmarshalState) {
+	v := s.ReadEnum(CommonErrorCode_value)
+	if err := s.Err(); err != nil {
+		s.SetErrorf("could not read CommonErrorCode enum: %v", err)
+		return
+	}
+	*x = CommonErrorCode(v)
+}
+
+// UnmarshalText unmarshals the CommonErrorCode from text.
+func (x *CommonErrorCode) UnmarshalText(b []byte) error {
+	i, err := json.ParseEnumString(string(b), CommonErrorCode_value)
+	if err != nil {
+		return err
+	}
+	*x = CommonErrorCode(i)
+	return nil
+}
+
+// UnmarshalJSON unmarshals the CommonErrorCode from JSON.
+func (x *CommonErrorCode) UnmarshalJSON(b []byte) error {
+	return json.DefaultUnmarshalerConfig.Unmarshal(b, x)
+}
+
+// MarshalProtoJSON marshals the ExternalMessageType to JSON.
+func (x ExternalMessageType) MarshalProtoJSON(s *json.MarshalState) {
+	s.WriteEnumString(int32(x), ExternalMessageType_name)
+}
+
+// MarshalText marshals the ExternalMessageType to text.
+func (x ExternalMessageType) MarshalText() ([]byte, error) {
+	return []byte(json.GetEnumString(int32(x), ExternalMessageType_name)), nil
+}
+
+// MarshalJSON marshals the ExternalMessageType to JSON.
+func (x ExternalMessageType) MarshalJSON() ([]byte, error) {
+	return json.DefaultMarshalerConfig.Marshal(x)
+}
+
+// UnmarshalProtoJSON unmarshals the ExternalMessageType from JSON.
+func (x *ExternalMessageType) UnmarshalProtoJSON(s *json.UnmarshalState) {
+	v := s.ReadEnum(ExternalMessageType_value)
+	if err := s.Err(); err != nil {
+		s.SetErrorf("could not read ExternalMessageType enum: %v", err)
+		return
+	}
+	*x = ExternalMessageType(v)
+}
+
+// UnmarshalText unmarshals the ExternalMessageType from text.
+func (x *ExternalMessageType) UnmarshalText(b []byte) error {
+	i, err := json.ParseEnumString(string(b), ExternalMessageType_value)
+	if err != nil {
+		return err
+	}
+	*x = ExternalMessageType(i)
+	return nil
+}
+
+// UnmarshalJSON unmarshals the ExternalMessageType from JSON.
+func (x *ExternalMessageType) UnmarshalJSON(b []byte) error {
+	return json.DefaultUnmarshalerConfig.Unmarshal(b, x)
+}
+
+// MarshalProtoJSON marshals the LogLevel to JSON.
+func (x LogLevel) MarshalProtoJSON(s *json.MarshalState) {
+	s.WriteEnumString(int32(x), LogLevel_name)
+}
+
+// MarshalText marshals the LogLevel to text.
+func (x LogLevel) MarshalText() ([]byte, error) {
+	return []byte(json.GetEnumString(int32(x), LogLevel_name)), nil
+}
+
+// MarshalJSON marshals the LogLevel to JSON.
+func (x LogLevel) MarshalJSON() ([]byte, error) {
+	return json.DefaultMarshalerConfig.Marshal(x)
+}
+
+// UnmarshalProtoJSON unmarshals the LogLevel from JSON.
+func (x *LogLevel) UnmarshalProtoJSON(s *json.UnmarshalState) {
+	v := s.ReadEnum(LogLevel_value)
+	if err := s.Err(); err != nil {
+		s.SetErrorf("could not read LogLevel enum: %v", err)
+		return
+	}
+	*x = LogLevel(v)
+}
+
+// UnmarshalText unmarshals the LogLevel from text.
+func (x *LogLevel) UnmarshalText(b []byte) error {
+	i, err := json.ParseEnumString(string(b), LogLevel_value)
+	if err != nil {
+		return err
+	}
+	*x = LogLevel(i)
+	return nil
+}
+
+// UnmarshalJSON unmarshals the LogLevel from JSON.
+func (x *LogLevel) UnmarshalJSON(b []byte) error {
+	return json.DefaultUnmarshalerConfig.Unmarshal(b, x)
+}
+
+// MarshalProtoJSON marshals the Error message to JSON.
+func (x *Error) MarshalProtoJSON(s *json.MarshalState) {
+	if x == nil {
+		s.WriteNil()
+		return
+	}
+	s.WriteObjectStart()
+	var wroteField bool
+	if x.Code != 0 || s.HasField("code") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("code")
+		s.WriteInt32(x.Code)
+	}
+	if x.Detail != nil || s.HasField("detail") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("detail")
+		s.WriteString(*x.Detail)
+	}
+	if x.UserMessage != nil || s.HasField("userMessage") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("userMessage")
+		s.WriteString(*x.UserMessage)
+	}
+	if x.NotCommonError || s.HasField("NotCommonError") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("NotCommonError")
+		s.WriteBool(x.NotCommonError)
+	}
+	s.WriteObjectEnd()
+}
+
+// MarshalJSON marshals the Error to JSON.
+func (x *Error) MarshalJSON() ([]byte, error) {
+	return json.DefaultMarshalerConfig.Marshal(x)
+}
+
+// UnmarshalProtoJSON unmarshals the Error message from JSON.
+func (x *Error) UnmarshalProtoJSON(s *json.UnmarshalState) {
+	if s.ReadNil() {
+		return
+	}
+	s.ReadObject(func(key string) {
+		switch key {
+		default:
+			s.Skip() // ignore unknown field
+		case "code":
+			s.AddField("code")
+			x.Code = s.ReadInt32()
+		case "detail":
+			s.AddField("detail")
+			if s.ReadNil() {
+				x.Detail = nil
+				return
+			}
+			t := s.ReadString()
+			x.Detail = &t
+		case "user_message", "userMessage":
+			s.AddField("user_message")
+			if s.ReadNil() {
+				x.UserMessage = nil
+				return
+			}
+			t := s.ReadString()
+			x.UserMessage = &t
+		case "NotCommonError":
+			s.AddField("NotCommonError")
+			x.NotCommonError = s.ReadBool()
+		}
+	})
+}
+
+// UnmarshalJSON unmarshals the Error from JSON.
+func (x *Error) UnmarshalJSON(b []byte) error {
+	return json.DefaultUnmarshalerConfig.Unmarshal(b, x)
+}
+
+// MarshalProtoJSON marshals the BusMessage message to JSON.
+func (x *BusMessage) MarshalProtoJSON(s *json.MarshalState) {
+	if x == nil {
+		s.WriteNil()
+		return
+	}
+	s.WriteObjectStart()
+	var wroteField bool
+	if x.Topic != "" || s.HasField("topic") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("topic")
+		s.WriteString(x.Topic)
+	}
+	if x.Type != 0 || s.HasField("type") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("type")
+		s.WriteInt32(x.Type)
+	}
+	if x.Error != nil || s.HasField("error") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("error")
+		x.Error.MarshalProtoJSON(s.WithField("error"))
+	}
+	if x.Message != nil || s.HasField("message") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("message")
+		s.WriteBytes(x.Message)
+	}
+	if x.ReplyTo != nil || s.HasField("replyTo") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("replyTo")
+		s.WriteInt64(*x.ReplyTo)
+	}
+	if x.FromMod != "" || s.HasField("fromMod") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("fromMod")
+		s.WriteString(x.FromMod)
+	}
+	s.WriteObjectEnd()
+}
+
+// MarshalJSON marshals the BusMessage to JSON.
+func (x *BusMessage) MarshalJSON() ([]byte, error) {
+	return json.DefaultMarshalerConfig.Marshal(x)
+}
+
+// UnmarshalProtoJSON unmarshals the BusMessage message from JSON.
+func (x *BusMessage) UnmarshalProtoJSON(s *json.UnmarshalState) {
+	if s.ReadNil() {
+		return
+	}
+	s.ReadObject(func(key string) {
+		switch key {
+		default:
+			s.Skip() // ignore unknown field
+		case "topic":
+			s.AddField("topic")
+			x.Topic = s.ReadString()
+		case "type":
+			s.AddField("type")
+			x.Type = s.ReadInt32()
+		case "error":
+			if s.ReadNil() {
+				x.Error = nil
+				return
+			}
+			x.Error = &Error{}
+			x.Error.UnmarshalProtoJSON(s.WithField("error", true))
+		case "message":
+			s.AddField("message")
+			if s.ReadNil() {
+				x.Message = nil
+				return
+			}
+			x.Message = s.ReadBytes()
+		case "reply_to", "replyTo":
+			s.AddField("reply_to")
+			if s.ReadNil() {
+				x.ReplyTo = nil
+				return
+			}
+			t := s.ReadInt64()
+			x.ReplyTo = &t
+		case "from_mod", "fromMod":
+			s.AddField("from_mod")
+			x.FromMod = s.ReadString()
+		}
+	})
+}
+
+// UnmarshalJSON unmarshals the BusMessage from JSON.
+func (x *BusMessage) UnmarshalJSON(b []byte) error {
+	return json.DefaultUnmarshalerConfig.Unmarshal(b, x)
+}
+
+// MarshalProtoJSON marshals the HasTopicRequest message to JSON.
+func (x *HasTopicRequest) MarshalProtoJSON(s *json.MarshalState) {
+	if x == nil {
+		s.WriteNil()
+		return
+	}
+	s.WriteObjectStart()
+	var wroteField bool
+	if x.Topic != "" || s.HasField("topic") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("topic")
+		s.WriteString(x.Topic)
+	}
+	if x.TimeoutMs != 0 || s.HasField("timeoutMs") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("timeoutMs")
+		s.WriteInt32(x.TimeoutMs)
+	}
+	s.WriteObjectEnd()
+}
+
+// MarshalJSON marshals the HasTopicRequest to JSON.
+func (x *HasTopicRequest) MarshalJSON() ([]byte, error) {
+	return json.DefaultMarshalerConfig.Marshal(x)
+}
+
+// UnmarshalProtoJSON unmarshals the HasTopicRequest message from JSON.
+func (x *HasTopicRequest) UnmarshalProtoJSON(s *json.UnmarshalState) {
+	if s.ReadNil() {
+		return
+	}
+	s.ReadObject(func(key string) {
+		switch key {
+		default:
+			s.Skip() // ignore unknown field
+		case "topic":
+			s.AddField("topic")
+			x.Topic = s.ReadString()
+		case "timeout_ms", "timeoutMs":
+			s.AddField("timeout_ms")
+			x.TimeoutMs = s.ReadInt32()
+		}
+	})
+}
+
+// UnmarshalJSON unmarshals the HasTopicRequest from JSON.
+func (x *HasTopicRequest) UnmarshalJSON(b []byte) error {
+	return json.DefaultUnmarshalerConfig.Unmarshal(b, x)
+}
+
+// MarshalProtoJSON marshals the HasTopicResponse message to JSON.
+func (x *HasTopicResponse) MarshalProtoJSON(s *json.MarshalState) {
+	if x == nil {
+		s.WriteNil()
+		return
+	}
+	s.WriteObjectStart()
+	var wroteField bool
+	if x.Topic != "" || s.HasField("topic") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("topic")
+		s.WriteString(x.Topic)
+	}
+	if x.HasTopic || s.HasField("hasTopic") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("hasTopic")
+		s.WriteBool(x.HasTopic)
+	}
+	s.WriteObjectEnd()
+}
+
+// MarshalJSON marshals the HasTopicResponse to JSON.
+func (x *HasTopicResponse) MarshalJSON() ([]byte, error) {
+	return json.DefaultMarshalerConfig.Marshal(x)
+}
+
+// UnmarshalProtoJSON unmarshals the HasTopicResponse message from JSON.
+func (x *HasTopicResponse) UnmarshalProtoJSON(s *json.UnmarshalState) {
+	if s.ReadNil() {
+		return
+	}
+	s.ReadObject(func(key string) {
+		switch key {
+		default:
+			s.Skip() // ignore unknown field
+		case "topic":
+			s.AddField("topic")
+			x.Topic = s.ReadString()
+		case "has_topic", "hasTopic":
+			s.AddField("has_topic")
+			x.HasTopic = s.ReadBool()
+		}
+	})
+}
+
+// UnmarshalJSON unmarshals the HasTopicResponse from JSON.
+func (x *HasTopicResponse) UnmarshalJSON(b []byte) error {
+	return json.DefaultUnmarshalerConfig.Unmarshal(b, x)
+}
+
+// MarshalProtoJSON marshals the SubscribeRequest message to JSON.
+func (x *SubscribeRequest) MarshalProtoJSON(s *json.MarshalState) {
+	if x == nil {
+		s.WriteNil()
+		return
+	}
+	s.WriteObjectStart()
+	var wroteField bool
+	if x.Topic != "" || s.HasField("topic") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("topic")
+		s.WriteString(x.Topic)
+	}
+	s.WriteObjectEnd()
+}
+
+// MarshalJSON marshals the SubscribeRequest to JSON.
+func (x *SubscribeRequest) MarshalJSON() ([]byte, error) {
+	return json.DefaultMarshalerConfig.Marshal(x)
+}
+
+// UnmarshalProtoJSON unmarshals the SubscribeRequest message from JSON.
+func (x *SubscribeRequest) UnmarshalProtoJSON(s *json.UnmarshalState) {
+	if s.ReadNil() {
+		return
+	}
+	s.ReadObject(func(key string) {
+		switch key {
+		default:
+			s.Skip() // ignore unknown field
+		case "topic":
+			s.AddField("topic")
+			x.Topic = s.ReadString()
+		}
+	})
+}
+
+// UnmarshalJSON unmarshals the SubscribeRequest from JSON.
+func (x *SubscribeRequest) UnmarshalJSON(b []byte) error {
+	return json.DefaultUnmarshalerConfig.Unmarshal(b, x)
+}
+
+// MarshalProtoJSON marshals the SubscribeResponse message to JSON.
+func (x *SubscribeResponse) MarshalProtoJSON(s *json.MarshalState) {
+	if x == nil {
+		s.WriteNil()
+		return
+	}
+	s.WriteObjectStart()
+	s.WriteObjectEnd()
+}
+
+// MarshalJSON marshals the SubscribeResponse to JSON.
+func (x *SubscribeResponse) MarshalJSON() ([]byte, error) {
+	return json.DefaultMarshalerConfig.Marshal(x)
+}
+
+// UnmarshalProtoJSON unmarshals the SubscribeResponse message from JSON.
+func (x *SubscribeResponse) UnmarshalProtoJSON(s *json.UnmarshalState) {
+	if s.ReadNil() {
+		return
+	}
+}
+
+// UnmarshalJSON unmarshals the SubscribeResponse from JSON.
+func (x *SubscribeResponse) UnmarshalJSON(b []byte) error {
+	return json.DefaultUnmarshalerConfig.Unmarshal(b, x)
+}
+
+// MarshalProtoJSON marshals the UnsubscribeRequest message to JSON.
+func (x *UnsubscribeRequest) MarshalProtoJSON(s *json.MarshalState) {
+	if x == nil {
+		s.WriteNil()
+		return
+	}
+	s.WriteObjectStart()
+	var wroteField bool
+	if x.Topic != "" || s.HasField("topic") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("topic")
+		s.WriteString(x.Topic)
+	}
+	s.WriteObjectEnd()
+}
+
+// MarshalJSON marshals the UnsubscribeRequest to JSON.
+func (x *UnsubscribeRequest) MarshalJSON() ([]byte, error) {
+	return json.DefaultMarshalerConfig.Marshal(x)
+}
+
+// UnmarshalProtoJSON unmarshals the UnsubscribeRequest message from JSON.
+func (x *UnsubscribeRequest) UnmarshalProtoJSON(s *json.UnmarshalState) {
+	if s.ReadNil() {
+		return
+	}
+	s.ReadObject(func(key string) {
+		switch key {
+		default:
+			s.Skip() // ignore unknown field
+		case "topic":
+			s.AddField("topic")
+			x.Topic = s.ReadString()
+		}
+	})
+}
+
+// UnmarshalJSON unmarshals the UnsubscribeRequest from JSON.
+func (x *UnsubscribeRequest) UnmarshalJSON(b []byte) error {
+	return json.DefaultUnmarshalerConfig.Unmarshal(b, x)
+}
+
+// MarshalProtoJSON marshals the UnsubscribeResponse message to JSON.
+func (x *UnsubscribeResponse) MarshalProtoJSON(s *json.MarshalState) {
+	if x == nil {
+		s.WriteNil()
+		return
+	}
+	s.WriteObjectStart()
+	s.WriteObjectEnd()
+}
+
+// MarshalJSON marshals the UnsubscribeResponse to JSON.
+func (x *UnsubscribeResponse) MarshalJSON() ([]byte, error) {
+	return json.DefaultMarshalerConfig.Marshal(x)
+}
+
+// UnmarshalProtoJSON unmarshals the UnsubscribeResponse message from JSON.
+func (x *UnsubscribeResponse) UnmarshalProtoJSON(s *json.UnmarshalState) {
+	if s.ReadNil() {
+		return
+	}
+}
+
+// UnmarshalJSON unmarshals the UnsubscribeResponse from JSON.
+func (x *UnsubscribeResponse) UnmarshalJSON(b []byte) error {
+	return json.DefaultUnmarshalerConfig.Unmarshal(b, x)
+}
+
+// MarshalProtoJSON marshals the KVSetRequest message to JSON.
+func (x *KVSetRequest) MarshalProtoJSON(s *json.MarshalState) {
+	if x == nil {
+		s.WriteNil()
+		return
+	}
+	s.WriteObjectStart()
+	var wroteField bool
+	if len(x.Key) > 0 || s.HasField("key") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("key")
+		s.WriteBytes(x.Key)
+	}
+	if len(x.Value) > 0 || s.HasField("value") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("value")
+		s.WriteBytes(x.Value)
+	}
+	s.WriteObjectEnd()
+}
+
+// MarshalJSON marshals the KVSetRequest to JSON.
+func (x *KVSetRequest) MarshalJSON() ([]byte, error) {
+	return json.DefaultMarshalerConfig.Marshal(x)
+}
+
+// UnmarshalProtoJSON unmarshals the KVSetRequest message from JSON.
+func (x *KVSetRequest) UnmarshalProtoJSON(s *json.UnmarshalState) {
+	if s.ReadNil() {
+		return
+	}
+	s.ReadObject(func(key string) {
+		switch key {
+		default:
+			s.Skip() // ignore unknown field
+		case "key":
+			s.AddField("key")
+			x.Key = s.ReadBytes()
+		case "value":
+			s.AddField("value")
+			x.Value = s.ReadBytes()
+		}
+	})
+}
+
+// UnmarshalJSON unmarshals the KVSetRequest from JSON.
+func (x *KVSetRequest) UnmarshalJSON(b []byte) error {
+	return json.DefaultUnmarshalerConfig.Unmarshal(b, x)
+}
+
+// MarshalProtoJSON marshals the KVSetResponse message to JSON.
+func (x *KVSetResponse) MarshalProtoJSON(s *json.MarshalState) {
+	if x == nil {
+		s.WriteNil()
+		return
+	}
+	s.WriteObjectStart()
+	s.WriteObjectEnd()
+}
+
+// MarshalJSON marshals the KVSetResponse to JSON.
+func (x *KVSetResponse) MarshalJSON() ([]byte, error) {
+	return json.DefaultMarshalerConfig.Marshal(x)
+}
+
+// UnmarshalProtoJSON unmarshals the KVSetResponse message from JSON.
+func (x *KVSetResponse) UnmarshalProtoJSON(s *json.UnmarshalState) {
+	if s.ReadNil() {
+		return
+	}
+}
+
+// UnmarshalJSON unmarshals the KVSetResponse from JSON.
+func (x *KVSetResponse) UnmarshalJSON(b []byte) error {
+	return json.DefaultUnmarshalerConfig.Unmarshal(b, x)
+}
+
+// MarshalProtoJSON marshals the KVGetRequest message to JSON.
+func (x *KVGetRequest) MarshalProtoJSON(s *json.MarshalState) {
+	if x == nil {
+		s.WriteNil()
+		return
+	}
+	s.WriteObjectStart()
+	var wroteField bool
+	if len(x.Key) > 0 || s.HasField("key") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("key")
+		s.WriteBytes(x.Key)
+	}
+	s.WriteObjectEnd()
+}
+
+// MarshalJSON marshals the KVGetRequest to JSON.
+func (x *KVGetRequest) MarshalJSON() ([]byte, error) {
+	return json.DefaultMarshalerConfig.Marshal(x)
+}
+
+// UnmarshalProtoJSON unmarshals the KVGetRequest message from JSON.
+func (x *KVGetRequest) UnmarshalProtoJSON(s *json.UnmarshalState) {
+	if s.ReadNil() {
+		return
+	}
+	s.ReadObject(func(key string) {
+		switch key {
+		default:
+			s.Skip() // ignore unknown field
+		case "key":
+			s.AddField("key")
+			x.Key = s.ReadBytes()
+		}
+	})
+}
+
+// UnmarshalJSON unmarshals the KVGetRequest from JSON.
+func (x *KVGetRequest) UnmarshalJSON(b []byte) error {
+	return json.DefaultUnmarshalerConfig.Unmarshal(b, x)
+}
+
+// MarshalProtoJSON marshals the KVGetResponse message to JSON.
+func (x *KVGetResponse) MarshalProtoJSON(s *json.MarshalState) {
+	if x == nil {
+		s.WriteNil()
+		return
+	}
+	s.WriteObjectStart()
+	var wroteField bool
+	if len(x.Key) > 0 || s.HasField("key") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("key")
+		s.WriteBytes(x.Key)
+	}
+	if len(x.Value) > 0 || s.HasField("value") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("value")
+		s.WriteBytes(x.Value)
+	}
+	s.WriteObjectEnd()
+}
+
+// MarshalJSON marshals the KVGetResponse to JSON.
+func (x *KVGetResponse) MarshalJSON() ([]byte, error) {
+	return json.DefaultMarshalerConfig.Marshal(x)
+}
+
+// UnmarshalProtoJSON unmarshals the KVGetResponse message from JSON.
+func (x *KVGetResponse) UnmarshalProtoJSON(s *json.UnmarshalState) {
+	if s.ReadNil() {
+		return
+	}
+	s.ReadObject(func(key string) {
+		switch key {
+		default:
+			s.Skip() // ignore unknown field
+		case "key":
+			s.AddField("key")
+			x.Key = s.ReadBytes()
+		case "value":
+			s.AddField("value")
+			x.Value = s.ReadBytes()
+		}
+	})
+}
+
+// UnmarshalJSON unmarshals the KVGetResponse from JSON.
+func (x *KVGetResponse) UnmarshalJSON(b []byte) error {
+	return json.DefaultUnmarshalerConfig.Unmarshal(b, x)
+}
+
+// MarshalProtoJSON marshals the KVListRequest message to JSON.
+func (x *KVListRequest) MarshalProtoJSON(s *json.MarshalState) {
+	if x == nil {
+		s.WriteNil()
+		return
+	}
+	s.WriteObjectStart()
+	var wroteField bool
+	if len(x.Prefix) > 0 || s.HasField("prefix") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("prefix")
+		s.WriteBytes(x.Prefix)
+	}
+	if x.Offset != 0 || s.HasField("offset") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("offset")
+		s.WriteUint32(x.Offset)
+	}
+	if x.Limit != 0 || s.HasField("limit") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("limit")
+		s.WriteUint32(x.Limit)
+	}
+	s.WriteObjectEnd()
+}
+
+// MarshalJSON marshals the KVListRequest to JSON.
+func (x *KVListRequest) MarshalJSON() ([]byte, error) {
+	return json.DefaultMarshalerConfig.Marshal(x)
+}
+
+// UnmarshalProtoJSON unmarshals the KVListRequest message from JSON.
+func (x *KVListRequest) UnmarshalProtoJSON(s *json.UnmarshalState) {
+	if s.ReadNil() {
+		return
+	}
+	s.ReadObject(func(key string) {
+		switch key {
+		default:
+			s.Skip() // ignore unknown field
+		case "prefix":
+			s.AddField("prefix")
+			x.Prefix = s.ReadBytes()
+		case "offset":
+			s.AddField("offset")
+			x.Offset = s.ReadUint32()
+		case "limit":
+			s.AddField("limit")
+			x.Limit = s.ReadUint32()
+		}
+	})
+}
+
+// UnmarshalJSON unmarshals the KVListRequest from JSON.
+func (x *KVListRequest) UnmarshalJSON(b []byte) error {
+	return json.DefaultUnmarshalerConfig.Unmarshal(b, x)
+}
+
+// MarshalProtoJSON marshals the KVListResponse message to JSON.
+func (x *KVListResponse) MarshalProtoJSON(s *json.MarshalState) {
+	if x == nil {
+		s.WriteNil()
+		return
+	}
+	s.WriteObjectStart()
+	var wroteField bool
+	if len(x.Keys) > 0 || s.HasField("keys") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("keys")
+		s.WriteBytesArray(x.Keys)
+	}
+	if len(x.Prefix) > 0 || s.HasField("prefix") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("prefix")
+		s.WriteBytes(x.Prefix)
+	}
+	if x.TotalMatches != 0 || s.HasField("totalMatches") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("totalMatches")
+		s.WriteUint32(x.TotalMatches)
+	}
+	if x.Offset != 0 || s.HasField("offset") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("offset")
+		s.WriteUint32(x.Offset)
+	}
+	if x.Limit != 0 || s.HasField("limit") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("limit")
+		s.WriteUint32(x.Limit)
+	}
+	s.WriteObjectEnd()
+}
+
+// MarshalJSON marshals the KVListResponse to JSON.
+func (x *KVListResponse) MarshalJSON() ([]byte, error) {
+	return json.DefaultMarshalerConfig.Marshal(x)
+}
+
+// UnmarshalProtoJSON unmarshals the KVListResponse message from JSON.
+func (x *KVListResponse) UnmarshalProtoJSON(s *json.UnmarshalState) {
+	if s.ReadNil() {
+		return
+	}
+	s.ReadObject(func(key string) {
+		switch key {
+		default:
+			s.Skip() // ignore unknown field
+		case "keys":
+			s.AddField("keys")
+			if s.ReadNil() {
+				x.Keys = nil
+				return
+			}
+			x.Keys = s.ReadBytesArray()
+		case "prefix":
+			s.AddField("prefix")
+			x.Prefix = s.ReadBytes()
+		case "total_matches", "totalMatches":
+			s.AddField("total_matches")
+			x.TotalMatches = s.ReadUint32()
+		case "offset":
+			s.AddField("offset")
+			x.Offset = s.ReadUint32()
+		case "limit":
+			s.AddField("limit")
+			x.Limit = s.ReadUint32()
+		}
+	})
+}
+
+// UnmarshalJSON unmarshals the KVListResponse from JSON.
+func (x *KVListResponse) UnmarshalJSON(b []byte) error {
+	return json.DefaultUnmarshalerConfig.Unmarshal(b, x)
+}
+
+// MarshalProtoJSON marshals the KVDeleteRequest message to JSON.
+func (x *KVDeleteRequest) MarshalProtoJSON(s *json.MarshalState) {
+	if x == nil {
+		s.WriteNil()
+		return
+	}
+	s.WriteObjectStart()
+	var wroteField bool
+	if len(x.Key) > 0 || s.HasField("key") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("key")
+		s.WriteBytes(x.Key)
+	}
+	s.WriteObjectEnd()
+}
+
+// MarshalJSON marshals the KVDeleteRequest to JSON.
+func (x *KVDeleteRequest) MarshalJSON() ([]byte, error) {
+	return json.DefaultMarshalerConfig.Marshal(x)
+}
+
+// UnmarshalProtoJSON unmarshals the KVDeleteRequest message from JSON.
+func (x *KVDeleteRequest) UnmarshalProtoJSON(s *json.UnmarshalState) {
+	if s.ReadNil() {
+		return
+	}
+	s.ReadObject(func(key string) {
+		switch key {
+		default:
+			s.Skip() // ignore unknown field
+		case "key":
+			s.AddField("key")
+			x.Key = s.ReadBytes()
+		}
+	})
+}
+
+// UnmarshalJSON unmarshals the KVDeleteRequest from JSON.
+func (x *KVDeleteRequest) UnmarshalJSON(b []byte) error {
+	return json.DefaultUnmarshalerConfig.Unmarshal(b, x)
+}
+
+// MarshalProtoJSON marshals the KVDeleteResponse message to JSON.
+func (x *KVDeleteResponse) MarshalProtoJSON(s *json.MarshalState) {
+	if x == nil {
+		s.WriteNil()
+		return
+	}
+	s.WriteObjectStart()
+	s.WriteObjectEnd()
+}
+
+// MarshalJSON marshals the KVDeleteResponse to JSON.
+func (x *KVDeleteResponse) MarshalJSON() ([]byte, error) {
+	return json.DefaultMarshalerConfig.Marshal(x)
+}
+
+// UnmarshalProtoJSON unmarshals the KVDeleteResponse message from JSON.
+func (x *KVDeleteResponse) UnmarshalProtoJSON(s *json.UnmarshalState) {
+	if s.ReadNil() {
+		return
+	}
+}
+
+// UnmarshalJSON unmarshals the KVDeleteResponse from JSON.
+func (x *KVDeleteResponse) UnmarshalJSON(b []byte) error {
+	return json.DefaultUnmarshalerConfig.Unmarshal(b, x)
+}
+
+// MarshalProtoJSON marshals the LogSendRequest_Arg message to JSON.
+func (x *LogSendRequest_Arg) MarshalProtoJSON(s *json.MarshalState) {
+	if x == nil {
+		s.WriteNil()
+		return
+	}
+	s.WriteObjectStart()
+	var wroteField bool
+	if x.Key != "" || s.HasField("key") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("key")
+		s.WriteString(x.Key)
+	}
+	if x.Value != nil {
+		switch ov := x.Value.(type) {
+		case *LogSendRequest_Arg_String_:
+			s.WriteMoreIf(&wroteField)
+			s.WriteObjectField("string")
+			s.WriteString(ov.String_)
+		case *LogSendRequest_Arg_Bool:
+			s.WriteMoreIf(&wroteField)
+			s.WriteObjectField("bool")
+			s.WriteBool(ov.Bool)
+		case *LogSendRequest_Arg_Int64:
+			s.WriteMoreIf(&wroteField)
+			s.WriteObjectField("int64")
+			s.WriteInt64(ov.Int64)
+		case *LogSendRequest_Arg_Double:
+			s.WriteMoreIf(&wroteField)
+			s.WriteObjectField("double")
+			s.WriteFloat64(ov.Double)
+		}
+	}
+	s.WriteObjectEnd()
+}
+
+// MarshalJSON marshals the LogSendRequest_Arg to JSON.
+func (x *LogSendRequest_Arg) MarshalJSON() ([]byte, error) {
+	return json.DefaultMarshalerConfig.Marshal(x)
+}
+
+// UnmarshalProtoJSON unmarshals the LogSendRequest_Arg message from JSON.
+func (x *LogSendRequest_Arg) UnmarshalProtoJSON(s *json.UnmarshalState) {
+	if s.ReadNil() {
+		return
+	}
+	s.ReadObject(func(key string) {
+		switch key {
+		default:
+			s.Skip() // ignore unknown field
+		case "key":
+			s.AddField("key")
+			x.Key = s.ReadString()
+		case "string":
+			s.AddField("string")
+			ov := &LogSendRequest_Arg_String_{}
+			x.Value = ov
+			ov.String_ = s.ReadString()
+		case "bool":
+			s.AddField("bool")
+			ov := &LogSendRequest_Arg_Bool{}
+			x.Value = ov
+			ov.Bool = s.ReadBool()
+		case "int64":
+			s.AddField("int64")
+			ov := &LogSendRequest_Arg_Int64{}
+			x.Value = ov
+			ov.Int64 = s.ReadInt64()
+		case "double":
+			s.AddField("double")
+			ov := &LogSendRequest_Arg_Double{}
+			x.Value = ov
+			ov.Double = s.ReadFloat64()
+		}
+	})
+}
+
+// UnmarshalJSON unmarshals the LogSendRequest_Arg from JSON.
+func (x *LogSendRequest_Arg) UnmarshalJSON(b []byte) error {
+	return json.DefaultUnmarshalerConfig.Unmarshal(b, x)
+}
+
+// MarshalProtoJSON marshals the LogSendRequest message to JSON.
+func (x *LogSendRequest) MarshalProtoJSON(s *json.MarshalState) {
+	if x == nil {
+		s.WriteNil()
+		return
+	}
+	s.WriteObjectStart()
+	var wroteField bool
+	if x.Level != 0 || s.HasField("level") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("level")
+		x.Level.MarshalProtoJSON(s)
+	}
+	if x.Message != "" || s.HasField("message") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("message")
+		s.WriteString(x.Message)
+	}
+	if len(x.Args) > 0 || s.HasField("args") {
+		s.WriteMoreIf(&wroteField)
+		s.WriteObjectField("args")
+		s.WriteArrayStart()
+		var wroteElement bool
+		for _, element := range x.Args {
+			s.WriteMoreIf(&wroteElement)
+			element.MarshalProtoJSON(s.WithField("args"))
+		}
+		s.WriteArrayEnd()
+	}
+	s.WriteObjectEnd()
+}
+
+// MarshalJSON marshals the LogSendRequest to JSON.
+func (x *LogSendRequest) MarshalJSON() ([]byte, error) {
+	return json.DefaultMarshalerConfig.Marshal(x)
+}
+
+// UnmarshalProtoJSON unmarshals the LogSendRequest message from JSON.
+func (x *LogSendRequest) UnmarshalProtoJSON(s *json.UnmarshalState) {
+	if s.ReadNil() {
+		return
+	}
+	s.ReadObject(func(key string) {
+		switch key {
+		default:
+			s.Skip() // ignore unknown field
+		case "level":
+			s.AddField("level")
+			x.Level.UnmarshalProtoJSON(s)
+		case "message":
+			s.AddField("message")
+			x.Message = s.ReadString()
+		case "args":
+			s.AddField("args")
+			if s.ReadNil() {
+				x.Args = nil
+				return
+			}
+			s.ReadArray(func() {
+				if s.ReadNil() {
+					x.Args = append(x.Args, nil)
+					return
+				}
+				v := &LogSendRequest_Arg{}
+				v.UnmarshalProtoJSON(s.WithField("args", false))
+				if s.Err() != nil {
+					return
+				}
+				x.Args = append(x.Args, v)
+			})
+		}
+	})
+}
+
+// UnmarshalJSON unmarshals the LogSendRequest from JSON.
+func (x *LogSendRequest) UnmarshalJSON(b []byte) error {
+	return json.DefaultUnmarshalerConfig.Unmarshal(b, x)
+}
+
+// MarshalProtoJSON marshals the LogSendResponse message to JSON.
+func (x *LogSendResponse) MarshalProtoJSON(s *json.MarshalState) {
+	if x == nil {
+		s.WriteNil()
+		return
+	}
+	s.WriteObjectStart()
+	s.WriteObjectEnd()
+}
+
+// MarshalJSON marshals the LogSendResponse to JSON.
+func (x *LogSendResponse) MarshalJSON() ([]byte, error) {
+	return json.DefaultMarshalerConfig.Marshal(x)
+}
+
+// UnmarshalProtoJSON unmarshals the LogSendResponse message from JSON.
+func (x *LogSendResponse) UnmarshalProtoJSON(s *json.UnmarshalState) {
+	if s.ReadNil() {
+		return
+	}
+}
+
+// UnmarshalJSON unmarshals the LogSendResponse from JSON.
+func (x *LogSendResponse) UnmarshalJSON(b []byte) error {
+	return json.DefaultUnmarshalerConfig.Unmarshal(b, x)
+}
+
 func (m *Error) MarshalVT() (dAtA []byte, err error) {
 	if m == nil {
 		return nil, nil

@@ -78,7 +78,7 @@ func TinyGoProtos() error {
 	}
 	err = sh.Run("protoc",
 		"--plugin", pcggl,
-		"--go-lite_opt", "features=marshal+unmarshal+size+equal+clone",
+		"--go-lite_opt", "features=marshal+unmarshal+size+equal+clone+json",
 		"-I", filepath.Join(akdir, "akcore"),
 		"--go-lite_out", baseDir,
 		srcpath,
